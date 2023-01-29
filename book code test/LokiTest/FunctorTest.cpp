@@ -62,6 +62,7 @@ void FunctorTest::Test()
     TestCallFunction();
     TestCallMemberFunc();
     TestBind();
+    TestChain();
 }
 
 void FunctorTest::TestCallOperator()
@@ -106,3 +107,16 @@ void FunctorTest::TestBind()
     // Prints: Fun(10, 15) called
     f2(15);
 }
+
+void FunctorTest::TestCallMemberFunc()
+{
+    Parrot geronimo;
+    // Define two Functors
+    Loki::Functor<void> cmd1(&geronimo, &Parrot::Eat);
+    Loki::Functor<void> cmd2(&geronimo, &Parrot::Speak);
+    
+    //note that cmd3 should have same return type as cmd1,cmd2,otherwise will compile fail!!
+    Loki::Functor<void> cmd3(Chain(cmd1,cmd2);
+                             
+}
+
