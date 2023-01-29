@@ -12,6 +12,7 @@ public:
     void TestCallFunction();
     void TestCallMemberFunc();
     void TestBind();
+    void TestChain();
 
 
 };
